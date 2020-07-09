@@ -1,0 +1,376 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>laundromat | Washermansepot</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="/static/img/favicon.png" rel="icon">
+  <link href="/static/img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="/static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="/static/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/static/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="/static/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="/static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="/static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+    <div class="title-box-d">
+      <h3 class="title-d">Schedule Pickup</h3>
+    </div>
+    <span class="close-box-collapse right-boxed ion-ios-close"></span>
+    <div class="box-collapse-wrap form">
+      <form class="form-a" action="" method="POST" role="form">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-12 mb-2">
+            <div class="form-group">
+              {{sform.name}}
+              <br>
+              {{sform.email}}
+              <br>
+              {{sform.address}}
+              <br>
+              {{sform.phone}}
+            </div>
+          </div>
+          <div class="col-md-12 mb-2">
+            <div class="form-group">
+              <label for="Type">Select service</label>
+              {{sform.service}}
+            </div>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-b">Schedule Pickup</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--/ Form Search End /-->
+ <!--/ Nav Star /-->
+ <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+  <div class="container">
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+      aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <a class="navbar-brand text-brand" href="{% url 'index'  %}">Washermans<span class="color-b">Depot</span></a>
+    <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
+      data-target="#navbarTogglerDemo01" aria-expanded="false">
+      <span  class="fa fa-search" aria-hidden="true"></span>
+    </button>
+    <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'index'  %}">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Services
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'drycleaning'  %}">Dry Cleaning</a>
+            <a class="dropdown-item" href="{% url 'laundromat'  %}">Laundromat</a>
+            <a class="dropdown-item" href="{% url 'commercial'  %}">Commercial Laundry</a>
+            <a class="dropdown-item" href="{% url 'schedule'  %}">Schedule PickUp</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'price'  %}">Price</a> 
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contact'  %}">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about'  %}">About Us</a>
+        </li>
+      </ul>
+    </div>
+    <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse"
+      data-target="#navbarTogglerDemo01" aria-expanded="false">
+      <span  aria-hidden="true"> Schedule PickUp</span>
+    </button>
+  </div>
+  {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li class="btn btn-{{ message.tags }} btn-sm">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+</nav>
+  <!--/ Intro Single star /-->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single">Laundromat</h1>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="{% url 'index'  %}">Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Laundromat
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Intro Single End /-->
+
+  <!--/ News Single Star /-->
+  <section class="news-single nav-arrow-b"> 
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+            {% for carousel in carousels %}
+            <div class="carousel-item-b">
+              <img src="{{carousel.image.url}}" alt="">
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+          <div class="post-information">
+            <ul class="list-inline text-center color-a">
+              <li class="list-inline-item mr-5">
+                <strong>WASH</strong>
+              </li>
+              <li class="list-inline-item mr-5">
+                <strong>DRY</strong>
+              </li>
+              <li class="list-inline-item mr-5">
+                <strong>FOLD</strong>
+              </li>
+              <li class="list-inline-item mr-5">
+                <strong>REPEAT</strong>
+              </li>
+            </ul>
+          </div>
+          {% for field in laundromats %}
+          <div class="post-content color-text-a text-justify">
+            <p>
+              {{field.paragraph}}
+            </p>
+          </div>
+          {% endfor %}
+    </section>
+    <section class="section-services section-8t c-all">
+      <div class="container">
+        <div class="row text-center ">
+          {% for field in laundromats %}
+          <div class="col-md-3">
+            <div class="card-box-c foo c1">
+              <div class="card-header-c d-flex">
+                
+              </div>
+              <div class="card-body-c ">
+                <span class="">
+                  <img src="{{field.image1.url}}" alt="" width="100px"> 
+                  
+                </span>
+                <h6 class="content-c ">
+                  <a href="#" class="link-c link-icon ">{{field.label1}}</a>
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card-box-c foo c2">
+              <div class="card-header-c d-flex">
+                
+              </div>
+              <div class="card-body-c">
+                <span class="">
+                  <img src="{{field.image2.url}}" alt="" width="100px">
+                </span>
+                <h6 class="content-c">
+                  <a href="#" class="link-c link-icon">{{field.label2}}</a>
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card-box-c foo c2">
+              <div class="card-header-c d-flex">
+                
+              </div>
+              <div class="card-body-c">
+                <span class="">
+                  <img src="{{field.image3.url}}" alt="" width="100px">
+                </span>
+                <h6 class="content-c">
+                  <a href="#" class="link-c link-icon">{{field.label3}}</a>
+                </h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card-box-c foo c2">
+              <div class="card-header-c d-flex">
+              </div>
+              <div class="card-body-c">
+                <span class="">
+                  <img src="{{field.image4.url}}" alt="" width="100px">
+                </span>
+                <h6 class="content-c ">
+                  <a href="#" class="link-c link-icon">{{field.label4}}</a>
+                </h6>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  <!--/ footer Star /-->
+  <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-8">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">Washermans Depot</h3>
+            </div>
+            <div class="w-body-a">
+              <p class="w-text-a color-text-a text-justify">
+               
+              </p>
+            </div>
+            <div class="w-footer-a">
+              <ul class="list-unstyled">
+                <li class="color-a">
+                  <span class="color-text-a">Email .</span> washermansdepot@gmail.com</li>
+                  <li class="item-list-a">
+                    <i></i> <a href="#">33, Toyin Street, beside Water-Park</a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <p class="w-title-a text-brand text-center">To Schedule PickUp</p>
+            </div>
+            <div class="w-body-a">
+              <ul class="list-unstyled text-center">
+                <li class="item-list-a">
+                   <a href="#">Call</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="#">+234-7066-718-178</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="fa fa-angle-right"></i> <a href="#">+234-8057-131-529</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="{% url 'index'  %}">Home</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{% url 'about'  %}">About</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{% url 'price'  %}">Pricing</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="{% url 'contact'  %}">Contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="socials-a">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="copyright-footer">
+            <p class="copyright color-text-a">
+              &copy; Copyright
+              <span class="color-a">Washermans Depot</span> All Rights Reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--/ Footer End /-->
+
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <div id="preloader"></div>
+
+  <!-- JavaScript Libraries -->
+  <script src="/static/lib/jquery/jquery.min.js"></script>
+  <script src="/static/lib/jquery/jquery-migrate.min.js"></script>
+  <script src="/static/lib/popper/popper.min.js"></script>
+  <script src="/static/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/static/lib/easing/easing.min.js"></script>
+  <script src="/static/lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="/static/lib/scrollreveal/scrollreveal.min.js"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="/static/contactform/contactform.js"></script>
+
+  <!-- Main Javascript File -->
+  <script src="/static/js/main.js"></script>
+
+</body>
+</html>
